@@ -26,7 +26,11 @@ class ExchangeApi
         $header['errmsg'] 	= curl_error($ch);
         curl_close($ch);
 
-        return $rates;
+        return usort($rates, function($a,$b){
+            $a = 0 + $a['last'];
+            $b = 0 + $b['last'];
+            return ($a['last']-$b['last']);
+        });
     }
 
     /**
