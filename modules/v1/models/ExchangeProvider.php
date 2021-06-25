@@ -2,6 +2,7 @@
 
 namespace app\modules\api\v1\models;
 
+use app\models\Partners;
 use app\modules\api\v1\api\ExchangeApi;
 use Exception;
 use yii\base\Model;
@@ -110,12 +111,7 @@ class ExchangeProvider extends Model
      */
     public function setPartnerId($apiToken)
     {
-        /**
-         *  Конкретная реализация зависит от настроек системы, в которую будем интегрироваться.
-         *  Для теста принимаем, что данный метод реализован в указанном классе и возвращает экземпляр этого класса
-         *  в случае наличия соответствующей записи в бд.
-         *  Именно в этом классе необходимо настроить формат токена (64 символа из числа "A-Za-z0-9\-\_")
-         */
+        /** @var Partners $partner */
         $partner = Partners::getByApiKey($apiToken);
         if ($partner) {
             $this->partner_id = $partner->id;
@@ -161,6 +157,5 @@ class ExchangeProvider extends Model
         } else {
             throw new Exception('Missed necessary params!');
         }
-
     }
 }

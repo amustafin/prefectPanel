@@ -5,7 +5,11 @@ namespace app\modules\api\v1;
 use yii\base\Module;
 
 /**
- * v1 module definition class
+ * Class ApiModuleV1
+ *
+ * @property string $controllerNamespace
+ *
+ * @package app\modules\api\v1
  */
 class ApiModule extends Module
 {
@@ -22,4 +26,3 @@ class ApiModule extends Module
         parent::init();
     }
 }
-
